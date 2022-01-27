@@ -1,0 +1,4 @@
+Добавить Screen и Storage и осуществить их внедрение в Computer соответственно через:
+1) Java Config (пакет ru.specialist.java.spring.javaconfig)
+2) Annotation Config (пакет ru.specialist.java.spring.annotation)
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="ru.specialist.java.spring.xml.Computer">
+        <constructor-arg name="cpu" ref="intel"/>
+        <!--        <property name="cpu" ref="amd"/>-->
+        <!--        <property name="cpu" ref="staticFactoryCPU"/>-->
+
+        <constructor-arg name="memoryList">
+            <list>
+                <ref bean="sony"/>
+                <ref bean="kingston1"/>
+                <ref bean="kingston2"/>
+            </list>
+        </constructor-arg>
+
+        <!--        <property name="memoryList">-->
+        <!--            <list>-->
+        <!--                <ref bean="sony"/>-->
+        <!--                <ref bean="kingston1"/>-->
+        <!--                <ref bean="kingston2"/>-->
+        <!--            </list>-->
+        <!--        </property>-->
+
+        <property name="screen">
+            <bean class="ru.specialist.java.spring.xml.DellScreen"/>
+        </property>
+
+        <property name="storageList">
+            <list>
+                <ref bean="wd"/>
+                <ref bean="seagate"/>
+            </list>
+        </property>
+
+
+    </bean>
+
+
+    <bean class="ru.specialist.java.spring.xml.AmdCPU" id="amd"/>
+    <bean class="ru.specialist.java.spring.xml.IntelCPU" id="intel"/>
+
+    <bean id="staticFactoryCPU"
+          class="ru.specialist.java.spring.xml.StaticCPUFactory"
+          factory-method="createCPU">
+        <constructor-arg name="name" value="a5yw4e5wmd"/>
+    </bean>
+
+    <bean class="ru.specialist.java.spring.xml.SonyMemory" id="sony"/>
+    <bean class="ru.specialist.java.spring.xml.KingstonMemory" id="kingston1"/>
+    <bean class="ru.specialist.java.spring.xml.KingstonMemory" id="kingston2"/>
+
+    <bean class="ru.specialist.java.spring.xml.WDStorage" id="wd"/>
+    <bean class="ru.specialist.java.spring.xml.SeagateStorage" id="seagate"/>
+</beans>
